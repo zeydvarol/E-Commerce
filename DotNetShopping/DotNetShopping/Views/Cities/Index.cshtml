@@ -1,0 +1,56 @@
+﻿@model IEnumerable<DotNetShopping.Models.CityListModel>
+
+@{
+    ViewBag.Title = "Cities";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Cities</h2>
+
+<p>
+    <div style="float:left; ">@Html.ActionLink("Create New", "Create")</div>
+    <div style="float:right;">
+        <div style="border-right:solid; border-width:1px; float:left; padding-right:5px;"> @Html.ActionLink("Create Country", "/../Countries")</div>
+        <div style="float:left; padding-left:5px;">@Html.ActionLink("Create State", "/../States")</div>
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Country.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StateId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country.code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CityId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CityId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CityId })
+        </td>
+    </tr>
+}
+
+</table>

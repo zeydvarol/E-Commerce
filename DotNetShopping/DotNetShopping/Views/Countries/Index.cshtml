@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DotNetShopping.Models.Country>
+
+@{
+    ViewBag.Title = "Countries";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Countries</h2>
+
+<p>
+    <div style="float:left; ">@Html.ActionLink("Create New", "Create")</div>
+    <div style="float:right;">
+        <div style="border-right:solid; border-width:1px; float:left; padding-right:5px;"> @Html.ActionLink("Create State", "/../States")</div> 
+        <div style="float:left; padding-left:5px;">@Html.ActionLink("Create City", "/../Cities")</div>
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CountryId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CountryId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CountryId })
+        </td>
+    </tr>
+}
+
+</table>
